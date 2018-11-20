@@ -3,6 +3,11 @@ import pandas_datareader.data as web
 import fix_yahoo_finance as yf
 start = datetime.datetime(2015,7,1)
 end = datetime.datetime(2016,7,1)
+
+    
+apple_df
+# this is my merge to the master branch.
+
   
 apple_df
 ms_df
