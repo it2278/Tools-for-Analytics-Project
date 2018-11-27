@@ -1,4 +1,20 @@
 
+#Individual Analysis of Three Technology Companies' stock (Apple, Microsoft and IBM)  and a tech-industry ETF stock (FTEC)
+#Apple's stock
+
+
+#Microsofit's stock
+
+
+#IBM's stock
+
+
+#ETF stock
+
+
+
+
+
 
 #Regression Analysis
 
@@ -11,4 +27,20 @@ start = datetime.datetime(2015,11,19)
 end = datetime.datetime(2018,11,19)
 df1 = web.DataReader(['AAPL', 'IBM','MSFT','FTEC'],'yahoo', start,end)['Close']
 
-    
+#Regression Table1
+import numpy as np
+import statsmodels.api as sm
+X=df1[['MSFT','IBM','AAPL']]
+X = sm.add_constant(X)
+y=df1['FTEC']
+model = sm.OLS(y,X,missing='drop')
+result = model.fit()
+print(result.summary())
+
+#Fitted Value Graph
+fig, ax = plt.subplots(figsize=(8,6))
+ax.plot(y)
+ax.plot(result.fittedvalues)   
+
+
+
