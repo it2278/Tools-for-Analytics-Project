@@ -13,6 +13,10 @@
 
 
 
+#Graphical Analysis
+
+
+#Basic Risk Analysis
 
 
 
@@ -20,27 +24,34 @@
 
 !source activate py36;pip install fix-yahoo-financeimport datetime      
 
-#First Regression Analysis - Close Stock Price
+#First Regression Analysis - Individual Stock's Return on Industry's ETF Return (One time period percent change)
 import pandas_datareader.data as web
 import fix_yahoo_finance as yf
 start = datetime.datetime(2015,11,19)
 end = datetime.datetime(2018,11,19)
 df1 = web.DataReader(['AAPL', 'IBM','MSFT','FTEC'],'yahoo', start,end)['Close']
+rets = df1.pct_change()
+
 
 #Regression Table1
 import numpy as np
 import statsmodels.api as sm
-X=df1[['MSFT','IBM','AAPL']]
+X = rets[['MSFT','IBM','AAPL']]
 X = sm.add_constant(X)
-y=df1['FTEC']
+y = rets['FTEC']
 model = sm.OLS(y,X,missing='drop')
 result = model.fit()
 print(result.summary())
+
 
 #Fitted Value Graph
 fig, ax = plt.subplots(figsize=(8,6))
 ax.plot(y)
 ax.plot(result.fittedvalues)   
+
+
+
+#Second Regression Analysis - 
 
 
 
