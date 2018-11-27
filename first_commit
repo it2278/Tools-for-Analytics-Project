@@ -1,14 +1,14 @@
-import datetime                       
+
+
+#Regression Analysis
+
+!source activate py36;pip install fix-yahoo-financeimport datetime      
+
+#First Regression Analysis - Close Stock Price
 import pandas_datareader.data as web
 import fix_yahoo_finance as yf
-start = datetime.datetime(2015,7,1)
-end = datetime.datetime(2016,7,1)
+start = datetime.datetime(2015,11,19)
+end = datetime.datetime(2018,11,19)
+df1 = web.DataReader(['AAPL', 'IBM','MSFT','FTEC'],'yahoo', start,end)['Close']
 
     
-apple_df
-# this is my merge to the master branch.
-
-  
-apple_df
-ms_df
-IBM_df
